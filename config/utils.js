@@ -2,6 +2,7 @@
 
 const path = require('path')
 const fs = require('fs')
+const os = require('os')
 const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
@@ -9,6 +10,26 @@ const devMode = process.env.NODE_ENV !== 'production'
 
 // 处理路径
 const resolve = (...src) => path.resolve(__dirname, ...src)
+
+// 获取本地 IP 地址
+const getLocalIpAddress = () => {
+  const interfaces = os.networkInterfaces()
+  let localIpAddress = ''
+
+  for (const addressObj of Object.values(interfaces)) {
+    const temp = addressObj.some(item => {
+      const { address, family, internal } = item
+      if (family === 'IPv4' && !internal) {
+        localIpAddress = address
+        return true
+      }
+      return false
+    })
+    if (temp) break
+  }
+
+  return localIpAddress
+}
 
 // 读取目录中的文件
 const readDir = (dirPath, topDirPath) => {
@@ -78,4 +99,9 @@ const genDefinePlugin = options => {
   return new webpack.DefinePlugin({ ...temp })
 }
 
-module.exports = { resolve, genHtmlWebpackPlugins, genDefinePlugin }
+module.exports = {
+  resolve,
+  getLocalIpAddress,
+  genHtmlWebpackPlugins,
+  genDefinePlugin
+}

@@ -1,7 +1,8 @@
 /* devServer */
+const host = require('./utils').getLocalIpAddress()
 
 module.exports = {
-  host: '127.0.0.1',
+  host,
   port: 2333,
   open: true,
   openPage: 'views/index.html',
