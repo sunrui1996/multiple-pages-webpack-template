@@ -34,7 +34,7 @@ module.exports = {
     'comma-spacing': 2, // 强制在逗号前后使用一致的空格
     'eol-last': 2, // 要求或禁止文件末尾存在空行
     'func-call-spacing': 2, // 要求或禁止在函数标识符和其调用之间有空格
-    'indent': [2, 2], // 强制使用一致的缩进
+    'indent': [2, 2, { 'SwitchCase': 1 }], // 强制使用一致的缩进
     'key-spacing': 2, // 强制在对象字面量的属性中键和值之间使用一致的间距
     'keyword-spacing': 2, // 强制在关键字前后使用一致的空格
     'multiline-ternary': [2, 'always-multiline'], // 要求或禁止在三元操作数中间换行
@@ -64,6 +64,7 @@ module.exports = {
     'no-confusing-arrow': 2, // 禁止在可能与比较操作符相混淆的地方使用箭头函数
     'no-var': 2, // 要求使用 let 或 const 而不是 var
     'object-shorthand': 2, // 要求或禁止对象字面量中方法和属性使用简写语法
+    'prefer-const': 2, // 要求使用 const 声明那些声明后不再被修改的变量
     'rest-spread-spacing': 2 // 强制剩余和扩展运算符及其表达式之间有空格
   }
 }
