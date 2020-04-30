@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.dev.conf.js --progress",
     "build": "cross-env NODE_ENV=production webpack --config build/webpack.prod.conf.js --progress",
-    "analyze": "cross-env NODE_ENV=production ANALYZE=true webpack --config build/webpack.prod.conf.js --progress"
+    "analyze": "cross-env ANALYZE=true npm run build"
   },
   "repository": {
     "type": "git",
